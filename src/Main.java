@@ -1,109 +1,106 @@
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
-        // Задача 1
-        System.out.println("Задача 1:");
-        int targetAmount = 2_459_000; // Целевая сумма
-        int savingsPerMonth = 15_000; // Ежемесячный взнос
-        int currentAmount = 0; // Текущая сумма
-        int months = 0; // Счетчик месяцев
+        // Задача 1: Объявление массивов
+        // Массив 1: Целочисленный массив, созданный через new
+        int[] intArray = new int[]{1, 2, 3};
 
-        while (currentAmount < targetAmount) {
-            months++;
-            currentAmount += savingsPerMonth;
-            System.out.println("Месяц " + months + ", сумма накоплений равна " + currentAmount + " рублей");
-        }
+        // Массив 2: Массив дробных чисел, сразу заполненный значениями
+        double[] doubleArray = {1.57, 7.654, 9.986};
 
-        // Задача 2
-        System.out.println("\nЗадача 2:");
-        int i = 1;
+        // Массив 3: Произвольный массив (например, строковый)
+        String[] stringArray = {"Java", "Python", "C++"};
 
-        // Вывод чисел от 1 до 10 с помощью цикла while
-        while (i <= 10) {
-            System.out.print(i + " ");
-            i++;
-        }
-        System.out.println(); // Переход на новую строку
+        // Задача 2: Вывод элементов массивов по порядку
+        System.out.println("Задача 2:");
+        printArray(intArray);
+        printArray(doubleArray);
+        printArray(stringArray);
 
-        // Вывод чисел от 10 до 1 с помощью цикла for
-        for (int j = 10; j >= 1; j--) {
-            System.out.print(j + " ");
-        }
-        System.out.println(); // Переход на новую строку
-
-        // Задача 3
+        // Задача 3: Вывод элементов массивов в обратном порядке
         System.out.println("\nЗадача 3:");
-        int population = 12_000_000; // Население
-        double birthRate = 17.0 / 1000; // Рождаемость
-        double deathRate = 8.0 / 1000; // Смертность
-        int years = 10; // Количество лет
+        printArrayReversed(intArray);
+        printArrayReversed(doubleArray);
+        printArrayReversed(stringArray);
 
-        for (int year = 1; year <= years; year++) {
-            population += (int)(population * (birthRate - deathRate));
-            System.out.println("Год " + year + ", численность населения составляет " + population);
-        }
-
-        // Задача 4
+        // Задача 4: Преобразование нечетных чисел в четные
         System.out.println("\nЗадача 4:");
-        double initialDeposit = 15_000; // Первоначальная сумма
-        double targetDeposit = 12_000_000; // Целевая сумма
-        double interestRate = 0.07; // Процентная ставка
-        months = 0; // Сброс счетчика месяцев
+        makeAllEven(intArray);
+        System.out.println(Arrays.toString(intArray));
+    }
 
-        while (initialDeposit < targetDeposit) {
-            months++;
-            initialDeposit += initialDeposit * interestRate;
-            System.out.println("Месяц " + months + ", сумма накоплений равна " + (int)initialDeposit + " рублей");
-        }
-
-        // Задача 5
-        System.out.println("\nЗадача 5:");
-        initialDeposit = 15_000; // Сброс первоначальной суммы
-        months = 0; // Сброс счетчика месяцев
-
-        while (initialDeposit < targetDeposit) {
-            months++;
-            initialDeposit += initialDeposit * interestRate;
-
-            if (months % 6 == 0) {
-                System.out.println("Месяц " + months + ", сумма накоплений равна " + (int)initialDeposit + " рублей");
+    // Метод для вывода элементов массива по порядку через запятую
+    private static <T> void printArray(T[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i]);
+            if (i < array.length - 1) {
+                System.out.print(", ");
             }
         }
+        System.out.println();
+    }
 
-        // Задача 6
-        System.out.println("\nЗадача 6:");
-        initialDeposit = 15_000; // Сброс первоначальной суммы
-        int yearsToSave = 9; // Количество лет
-        months = 0; // Сброс счетчика месяцев
-
-        while (yearsToSave > 0) {
-            months++;
-            initialDeposit += initialDeposit * interestRate;
-
-            if (months % 6 == 0) { // Каждые полгода
-                System.out.println("Через " + months / 6 + " полугодий, сумма накоплений равна " + (int)initialDeposit + " рублей");
-                yearsToSave -= 0.5; // Уменьшаем количество оставшихся лет
+    // Перегруженный метод для целочисленного массива
+    private static void printArray(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i]);
+            if (i < array.length - 1) {
+                System.out.print(", ");
             }
         }
+        System.out.println();
+    }
 
-        // Задача 7
-        System.out.println("\nЗадача 7:");
-        int firstFriday = 5; // Первое число пятницы (например, 5)
-        int daysInMonth = 31; // Количество дней в месяце
-
-        for (int day = firstFriday; day <= daysInMonth; day += 7) {
-            System.out.println("Сегодня пятница, " + day + "-е число. Необходимо подготовить отчет");
+    // Перегруженный метод для массива дробных чисел
+    private static void printArray(double[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i]);
+            if (i < array.length - 1) {
+                System.out.print(", ");
+            }
         }
+        System.out.println();
+    }
 
-        // Задача 8
-        System.out.println("\nЗадача 8:");
-        int currentYear = 2023; // Текущий год
-        int cometCycle = 79; // Цикл появления кометы
-        int startYear = currentYear - 200; // Год 200 лет назад
-        int endYear = currentYear + 100; // Год через 100 лет
+    // Метод для вывода элементов массива в обратном порядке через запятую
+    private static <T> void printArrayReversed(T[] array) {
+        for (int i = array.length - 1; i >= 0; i--) {
+            System.out.print(array[i]);
+            if (i > 0) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println();
+    }
 
-        for (int year = startYear; year <= endYear; year++) {
-            if ((year - startYear) % cometCycle == 0) {
-                System.out.println(year);
+    // Перегруженный метод для целочисленного массива
+    private static void printArrayReversed(int[] array) {
+        for (int i = array.length - 1; i >= 0; i--) {
+            System.out.print(array[i]);
+            if (i > 0) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println();
+    }
+
+    // Перегруженный метод для массива дробных чисел
+    private static void printArrayReversed(double[] array) {
+        for (int i = array.length - 1; i >= 0; i--) {
+            System.out.print(array[i]);
+            if (i > 0) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println();
+    }
+
+    // Метод для преобразования нечетных чисел в четные
+    private static void makeAllEven(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] % 2 != 0) {
+                array[i] += 1;
             }
         }
     }
